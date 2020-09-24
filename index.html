@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      Shopping List
+    </title>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+      #divLista{
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+        padding: 20px;
+      }
+    </style>
+
+    <script>
+  $(document).ready(function(){
+    $("#lista").click(function(){
+
+     newDiv = document.createElement("div");
+     newText = $("#cajita").val();
+
+     $("#cajita").val("");
+
+     //console.log(newText);
+
+     newTex = document.createTextNode(newText);
+     newDiv.appendChild(newTex);
+     newDiv.id = "divLista";
+
+     bre = document.createElement("br");
+
+     newDiv.append(bre);
+
+     but1 = document.createElement("button");
+     but1.type = "button";
+     but2 = document.createElement("button");
+     but2.type = "button";
+
+     text1 = document.createTextNode("check");
+     text2 = document.createTextNode("delete");
+
+     but1.appendChild(text1);
+     but2.appendChild(text2);
+
+
+     newDiv.append(but1);
+     newDiv.append(but2);
+
+     $("#lisDes").append(newDiv);
+
+
+     but1.onclick = function(){
+       $(this).closest("div").css("text-decoration", "line-through");
+     }
+
+
+     but2.onclick = function(){
+       $(this).closest("div").remove();
+       }
+
+
+    });
+  });
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        Shopping List
+      </h1>
+      <form>
+          <label>
+            Add an item
+          </label>
+          <input type="text" placeholder="e.g., broccoli", id="cajita">
+          <button type="button",  id="lista">
+            Add item
+          </button>
+      </form>
+      <ul id="lisDes">
+      </ul>
+    </div>
+  </body>
+</html>
